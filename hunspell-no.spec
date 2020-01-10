@@ -1,7 +1,7 @@
 Name: hunspell-no
 Summary: Norwegian hunspell dictionaries
 Version: 2.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 Source: https://alioth.debian.org/frs/download.php/3764/no_NO-pack2-2.1.zip
 Group: Applications/Text
 URL: http://spell-norwegian.alioth.debian.org
@@ -125,6 +125,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mythes/th_nn_NO_v2.*
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.1-3
+- Mass rebuild 2013-12-27
+
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
