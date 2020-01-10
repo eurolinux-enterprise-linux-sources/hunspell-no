@@ -1,16 +1,13 @@
 Name: hunspell-no
 Summary: Norwegian hunspell dictionaries
-Epoch: 1
-Version: 2.0.10
-Release: 1%{?dist}
-Source: https://alioth.debian.org/frs/download.php/file/2357/no_NO-pack2-2.0.10.zip
+Version: 2.1
+Release: 2%{?dist}
+Source: https://alioth.debian.org/frs/download.php/3764/no_NO-pack2-2.1.zip
 Group: Applications/Text
 URL: http://spell-norwegian.alioth.debian.org
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 License: GPL+
 BuildArch: noarch
-
-Patch1:  rhbz959989.badsfxrules.patch
 
 %description
 Norwegian hunspell dictionaries.
@@ -65,15 +62,14 @@ Nynorsk thesaurus.
 
 %prep
 %setup -q -c
+
+%build
 unzip -q nb_NO.zip
 unzip -q nn_NO.zip
 unzip -q hyph_nb_NO.zip
 unzip -q hyph_nn_NO.zip
 unzip -q th_nb_NO_v2.zip
 unzip -q th_nn_NO_v2.zip
-%patch1 -p0 -b .rhbz959989
-
-%build
 for i in README_nb_NO.txt README_nn_NO.txt README_hyph_nb_NO.txt \
   README_hyph_nn_NO.txt README_th_nb_NO_v2.txt README_th_nn_NO_v2.txt; do
   if ! iconv -f utf-8 -t utf-8 -o /dev/null $i > /dev/null 2>&1; then
@@ -129,12 +125,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mythes/th_nn_NO_v2.*
 
 %changelog
-* Tue Mar 01 2016 Caolán McNamara <caolanm@redhat.com> - 1:2.0.10
-- Resolves: rhbz#1245420 return to 2.0.10 by popular demand
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.1-3
-- Mass rebuild 2013-12-27
-
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
